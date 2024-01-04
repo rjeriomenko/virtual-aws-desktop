@@ -11,8 +11,8 @@ variable "AWS_SECRET_ACCESS_KEY" {
   sensitive = true
 }
 
-output "instance_ip_address" {
-  value = aws_instance.example.public_ip
+output "instance_ssh_address" {
+  value = "ubuntu@ec2-${replace(aws_instance.example.public_ip, ".", "-")}.compute-1.amazonaws.com"
 }
 
 provider "aws" {
@@ -31,6 +31,7 @@ resource "aws_instance" "example" {
   tags = {
     Name = "terraform-example"
   }
+  vpc_security_group_ids = [aws_security_group.ingress-all-test.id]
 }
 
 resource "aws_key_pair" "ssh-key" {
