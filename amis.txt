@@ -1,0 +1,2 @@
+vanilla ubuntu - "ami-0c7217cdde317cfec"
+charles frontend ready - "ami-01449267037290a88"

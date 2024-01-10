@@ -24,14 +24,14 @@ provider "aws" {
   }
 }
 
-resource "aws_instance" "example" {
-  ami = "ami-0c7217cdde317cfec"
+resource "aws_instance" "charles-ready" {
+  ami = "ami-01449267037290a88"
   instance_type = "t2.micro"
   key_name = aws_key_pair.ssh-key.key_name
   tags = {
-    Name = "terraform-example"
+    Name = "charles-ready"
   }
-  vpc_security_group_ids = [aws_security_group.ingress-all-test.id]
+  vpc_security_group_ids = [aws_security_group.ingress-egress-all-test.id]
 }
 
 resource "aws_key_pair" "ssh-key" {
