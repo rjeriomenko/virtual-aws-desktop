@@ -1,2 +1,6 @@
 vanilla ubuntu - "ami-0c7217cdde317cfec"
 charles frontend ready - "ami-01449267037290a88"
+charles frontend and ruby installed - "ami-0a17a44f844c3984f"
+charles frontend and citymove ready - "ami-0735134751db8e425"
+charles frontend and citymove actually ready - "ami-0e50b68ae6f3863e7"
+charles and citymove ready - "ami-023aee11add72edef"

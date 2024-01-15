@@ -12,7 +12,7 @@ variable "AWS_SECRET_ACCESS_KEY" {
 }
 
 output "instance_ssh_address" {
-  value = "ubuntu@ec2-${replace(aws_instance.example.public_ip, ".", "-")}.compute-1.amazonaws.com"
+  value = "ubuntu@ec2-${replace(aws_instance.projects-ready.public_ip, ".", "-")}.compute-1.amazonaws.com"
 }
 
 provider "aws" {
@@ -24,12 +24,12 @@ provider "aws" {
   }
 }
 
-resource "aws_instance" "charles-ready" {
-  ami = "ami-01449267037290a88"
-  instance_type = "t2.micro"
+resource "aws_instance" "projects-ready" {
+  ami = "ami-023aee11add72edef"
+  instance_type = "t2.medium"
   key_name = aws_key_pair.ssh-key.key_name
   tags = {
-    Name = "charles-ready"
+    Name = "projects-ready"
   }
   vpc_security_group_ids = [aws_security_group.ingress-egress-all-test.id]
 }
