@@ -15,6 +15,10 @@ output "instance_ssh_address" {
   value = "ubuntu@ec2-${replace(aws_instance.projects-ready.public_ip, ".", "-")}.compute-1.amazonaws.com"
 }
 
+# output "second_debug_address" {
+#   value = "ubuntu@ec2-${replace(aws_instance.double-debugging.public_ip, ".", "-")}.compute-1.amazonaws.com"
+# }
+
 provider "aws" {
   region = "us-east-1"
   access_key = var.AWS_ACCESS_KEY_ID
@@ -33,6 +37,16 @@ resource "aws_instance" "projects-ready" {
   }
   vpc_security_group_ids = [aws_security_group.ingress-egress-all-test.id]
 }
+
+# resource "aws_instance" "double-debugging" {
+#   ami = "ami-04efda02086333adf"
+#   instance_type = "t2.medium"
+#   key_name = aws_key_pair.ssh-key.key_name
+#   tags = {
+#     Name = "double-debugging"
+#   }
+#   vpc_security_group_ids = [aws_security_group.ingress-egress-all-test.id]
+# }
 
 resource "aws_key_pair" "ssh-key" {
   key_name = "aws-ssh-key"
