@@ -11,13 +11,13 @@ variable "AWS_SECRET_ACCESS_KEY" {
   sensitive = true
 }
 
-output "instance_ssh_address" {
-  value = "ubuntu@ec2-${replace(aws_instance.projects-ready.public_ip, ".", "-")}.compute-1.amazonaws.com"
-}
-
-# output "second_debug_address" {
-#   value = "ubuntu@ec2-${replace(aws_instance.double-debugging.public_ip, ".", "-")}.compute-1.amazonaws.com"
+# output "instance_ssh_address" {
+#   value = "ubuntu@ec2-${replace(aws_instance.projects-ready.public_ip, ".", "-")}.compute-1.amazonaws.com"
 # }
+
+output "second_debug_address" {
+  value = "ubuntu@ec2-${replace(aws_instance.java-ready.public_ip, ".", "-")}.compute-1.amazonaws.com"
+}
 
 provider "aws" {
   region = "us-east-1"
@@ -39,11 +39,11 @@ provider "aws" {
 # }
 
 resource "aws_instance" "java-ready" {
-  ami = "ami-0f5daaa3a7fb3378b"
+  ami = "ami-07d9b9ddc6cd8dd30"
   instance_type = "t2.medium"
   key_name = aws_key_pair.ssh-key.key_name
   tags = {
-    Name = "double-debugging"
+    Name = "java-ready"
   }
   vpc_security_group_ids = [aws_security_group.ingress-egress-all-test.id]
 }
