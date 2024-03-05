@@ -28,25 +28,25 @@ provider "aws" {
   }
 }
 
-resource "aws_instance" "projects-ready" {
-  ami = "ami-023aee11add72edef"
-  instance_type = "t2.medium"
-  key_name = aws_key_pair.ssh-key.key_name
-  tags = {
-    Name = "projects-ready"
-  }
-  vpc_security_group_ids = [aws_security_group.ingress-egress-all-test.id]
-}
-
-# resource "aws_instance" "double-debugging" {
-#   ami = "ami-04efda02086333adf"
+# resource "aws_instance" "projects-ready" {
+#   ami = "ami-023aee11add72edef"
 #   instance_type = "t2.medium"
 #   key_name = aws_key_pair.ssh-key.key_name
 #   tags = {
-#     Name = "double-debugging"
+#     Name = "projects-ready"
 #   }
 #   vpc_security_group_ids = [aws_security_group.ingress-egress-all-test.id]
 # }
+
+resource "aws_instance" "java-ready" {
+  ami = "ami-0f5daaa3a7fb3378b"
+  instance_type = "t2.medium"
+  key_name = aws_key_pair.ssh-key.key_name
+  tags = {
+    Name = "double-debugging"
+  }
+  vpc_security_group_ids = [aws_security_group.ingress-egress-all-test.id]
+}
 
 resource "aws_key_pair" "ssh-key" {
   key_name = "aws-ssh-key"
