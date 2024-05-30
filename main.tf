@@ -29,7 +29,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "projects-ready" {
-  ami = "ami-01d3282e9e0b6f716"
+  ami = "ami-03dc8d1b8d3116688"
   instance_type = "t2.medium"
   key_name = aws_key_pair.ssh-key.key_name
   tags = {
